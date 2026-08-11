@@ -15,13 +15,13 @@ class MainForm extends JFrame{
 			setTitle(title);
 			setLocationRelativeTo(null);
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			setSize(600,600);
+			setSize(650,550);
 			//setLayout(new GridLayout(
 			//IMAGE====
 			ImageIcon image = new ImageIcon("assets/img.png");
 			Image originalImage = image.getImage();
-			int targetWidth = 300;
-			int targetHeight = 300;
+			int targetWidth = 350;
+			int targetHeight = 350;
 			Image scaledImage = originalImage.getScaledInstance(targetWidth, targetHeight, Image.SCALE_SMOOTH);
 			ImageIcon resizedIcon = new ImageIcon(scaledImage);
 			JLabel label = new JLabel(resizedIcon);
@@ -32,65 +32,74 @@ class MainForm extends JFrame{
 			
 			//TITLE=====
 			lblTitle = new JLabel("iFRIEND Contact Organizer");
-			lblTitle.setFont(new Font(" ",1,20));
-			lblTitle.setHorizontalAlignment(JLabel.LEFT);
+			lblTitle.setFont(new Font(" ",3,25));
+			lblTitle.setHorizontalAlignment(0);
 			add("North",lblTitle);
 			
-			//BUTTON========
+			// BUTTONS
 			pnlButton = new JPanel();
 			pnlButton.setLayout(new BoxLayout(pnlButton, BoxLayout.Y_AXIS));
-			
-			pnlButton.add(btnAddContact);
-pnlButton.add(Box.createVerticalStrut(15));
 
-pnlButton.add(btnUpdateContact);
-pnlButton.add(Box.createVerticalStrut(15));
-
-pnlButton.add(btnDeleteContact);
-pnlButton.add(Box.createVerticalStrut(15));
-
-pnlButton.add(btnSearchContact);
-pnlButton.add(Box.createVerticalStrut(15));
-
-pnlButton.add(btnListContact);
-			//JPanel pnlAddContact = new JPanel();
+			// ADD
 			btnAddContact = new JButton("ADD Contacts");
-			btnAddContact.setFont(new Font("",1,10));
-			JPanel pnlAdd = new JPanel();
-			pnlAdd.add(btnAddContact);
-			pnlButton.add(pnlAdd);
-			
+			btnAddContact.setFont(new Font("", Font.BOLD, 15));
+			btnAddContact.setBackground(Color.GREEN);
+			btnAddContact.setAlignmentX(Component.CENTER_ALIGNMENT);
+			pnlButton.add(btnAddContact);
+
+			pnlButton.add(Box.createVerticalStrut(15));
+
+			// UPDATE
 			btnUpdateContact = new JButton("UPDATE Contacts");
-			btnUpdateContact.setFont(new Font("",1,10));
-			JPanel pnlUpdate = new JPanel();
-			pnlUpdate.add(btnUpdateContact);
-			pnlButton.add(pnlUpdate);
-			
+			btnUpdateContact.setFont(new Font("", Font.BOLD, 15));
+			btnUpdateContact.setBackground(Color.GREEN);
+			btnUpdateContact.setAlignmentX(Component.CENTER_ALIGNMENT);
+			pnlButton.add(btnUpdateContact);
+
+			pnlButton.add(Box.createVerticalStrut(15));
+
+			// DELETE
 			btnDeleteContact = new JButton("DELETE Contacts");
-			btnDeleteContact.setFont(new Font("",1,10));
-			JPanel pnlDelete = new JPanel();
-			pnlDelete.add(btnDeleteContact);
-			pnlButton.add(pnlDelete);
-			
+			btnDeleteContact.setFont(new Font("", Font.BOLD, 15));
+			btnDeleteContact.setBackground(Color.GREEN);
+			btnDeleteContact.setAlignmentX(Component.CENTER_ALIGNMENT);
+			pnlButton.add(btnDeleteContact);
+
+			pnlButton.add(Box.createVerticalStrut(15));
+
+			// SEARCH
 			btnSearchContact = new JButton("SEARCH Contacts");
-			btnSearchContact.setFont(new Font("",1,10));
-			JPanel pnlSearch = new JPanel();
-			pnlSearch.add(btnSearchContact);
-			pnlButton.add(pnlSearch);
-			
+			btnSearchContact.setFont(new Font("", Font.BOLD, 15));
+			btnSearchContact.setBackground(Color.GREEN);
+			btnSearchContact.setAlignmentX(Component.CENTER_ALIGNMENT);
+			pnlButton.add(btnSearchContact);
+
+			pnlButton.add(Box.createVerticalStrut(15));
+
+			// LIST
 			btnListContact = new JButton("LIST Contacts");
-			btnListContact.setFont(new Font("",1,10));
-			JPanel pnlList = new JPanel();
-			pnlList.add(btnListContact);
-			pnlButton.add(pnlList);
-			add(pnlButton);
-			
+			btnListContact.setFont(new Font("", Font.BOLD, 15));
+			btnListContact.setBackground(Color.GREEN);
+			btnListContact.setAlignmentX(Component.CENTER_ALIGNMENT);
+			pnlButton.add(btnListContact);
+
+			//add(pnlButton, BorderLayout.CENTER);
+			JPanel rightPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+
+			rightPanel.setBorder(
+				BorderFactory.createEmptyBorder(80, 5, 10, 50)
+			);
+
+			rightPanel.add(pnlButton);
+
+			add(rightPanel, BorderLayout.CENTER);
+			//rightPanel.setBackground(Color.PINK);
+
 			btnExist = new JButton("Exist");
-			btnExist.setFont(new Font("",1,8));
+			btnExist.setFont(new Font("",1,15));
+			btnExist.setBackground(Color.GREEN);
 			JPanel pnlExist = new JPanel(new FlowLayout(2));
-			//btnExist.setHorizontalAlignment(JButton.RIGHT);
 			pnlExist.add(btnExist);
-			//pnlExist.setHorizontalAlignment(2);
 			add("South",pnlExist);
 			setVisible(true);
 		}
