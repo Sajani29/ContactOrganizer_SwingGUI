@@ -2,62 +2,100 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 class MainForm extends JFrame{
-		JLabel imageLabel;
-		JPanel leftPanel;
-		JPanel rightPanel;
-		MainForm(String title){
-			setSize(1000,600);
+		private JPanel leftPanel;
+		private JLabel lblTitle;
+		private JButton btnAddContact;
+		private JButton btnUpdateContact;
+		private JButton btnDeleteContact;
+		private JButton btnSearchContact;
+		private JButton btnListContact;
+		private JButton btnExist;
+		private JPanel pnlButton;
+		 MainForm(String title){
+			setTitle(title);
 			setLocationRelativeTo(null);
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			setLayout(new GridLayout(1,2));
-			ImageIcon image = new ImageIcon("assets/images.png");
+			setSize(600,600);
+			//setLayout(new GridLayout(
+			//IMAGE====
+			ImageIcon image = new ImageIcon("assets/img.png");
+			Image originalImage = image.getImage();
+			int targetWidth = 300;
+			int targetHeight = 300;
+			Image scaledImage = originalImage.getScaledInstance(targetWidth, targetHeight, Image.SCALE_SMOOTH);
+			ImageIcon resizedIcon = new ImageIcon(scaledImage);
+			JLabel label = new JLabel(resizedIcon);
 			leftPanel = new JPanel();
-			leftPanel.setLayout(new GridLayout(2,1));
-			JLabel textLabel = new JLabel("iFriend Contact Organizer");
+			JLabel imageLabel = new JLabel(image);
+			leftPanel.add(label);
+			add("West",leftPanel);
 			
+			//TITLE=====
+			lblTitle = new JLabel("iFRIEND Contact Organizer");
+			lblTitle.setFont(new Font(" ",1,20));
+			lblTitle.setHorizontalAlignment(JLabel.LEFT);
+			add("North",lblTitle);
 			
-			imageLabel = new JLabel(image);
-			leftPanel.setBackground(Color.PINK);
-			leftPanel.add(textLabel);
-			leftPanel.add(imageLabel);
-			add(leftPanel);
+			//BUTTON========
+			pnlButton = new JPanel();
+			pnlButton.setLayout(new BoxLayout(pnlButton, BoxLayout.Y_AXIS));
 			
-			rightPanel = new JPanel();
-			rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
-			rightPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-			JButton redButton = createColoredButton("Red Action", Color.RED, Color.WHITE);
-            JButton greenButton = createColoredButton("Green Action", Color.GREEN, Color.BLACK);
-            JButton blueButton = createColoredButton("Blue Action", Color.BLUE, Color.WHITE);
-			
-			rightPanel.add(redButton);
-            rightPanel.add(Box.createRigidArea(new Dimension(0, 15))); 
-            rightPanel.add(greenButton);
-            rightPanel.add(Box.createRigidArea(new Dimension(0, 15))); 
-            rightPanel.add(blueButton);
+			pnlButton.add(btnAddContact);
+pnlButton.add(Box.createVerticalStrut(15));
 
-            frame.add(rightPanel);
-            frame.setLocationRelativeTo(null); // Center window on screen
-            frame.setVisible(true);
+pnlButton.add(btnUpdateContact);
+pnlButton.add(Box.createVerticalStrut(15));
+
+pnlButton.add(btnDeleteContact);
+pnlButton.add(Box.createVerticalStrut(15));
+
+pnlButton.add(btnSearchContact);
+pnlButton.add(Box.createVerticalStrut(15));
+
+pnlButton.add(btnListContact);
+			//JPanel pnlAddContact = new JPanel();
+			btnAddContact = new JButton("ADD Contacts");
+			btnAddContact.setFont(new Font("",1,10));
+			JPanel pnlAdd = new JPanel();
+			pnlAdd.add(btnAddContact);
+			pnlButton.add(pnlAdd);
+			
+			btnUpdateContact = new JButton("UPDATE Contacts");
+			btnUpdateContact.setFont(new Font("",1,10));
+			JPanel pnlUpdate = new JPanel();
+			pnlUpdate.add(btnUpdateContact);
+			pnlButton.add(pnlUpdate);
+			
+			btnDeleteContact = new JButton("DELETE Contacts");
+			btnDeleteContact.setFont(new Font("",1,10));
+			JPanel pnlDelete = new JPanel();
+			pnlDelete.add(btnDeleteContact);
+			pnlButton.add(pnlDelete);
+			
+			btnSearchContact = new JButton("SEARCH Contacts");
+			btnSearchContact.setFont(new Font("",1,10));
+			JPanel pnlSearch = new JPanel();
+			pnlSearch.add(btnSearchContact);
+			pnlButton.add(pnlSearch);
+			
+			btnListContact = new JButton("LIST Contacts");
+			btnListContact.setFont(new Font("",1,10));
+			JPanel pnlList = new JPanel();
+			pnlList.add(btnListContact);
+			pnlButton.add(pnlList);
+			add(pnlButton);
+			
+			btnExist = new JButton("Exist");
+			btnExist.setFont(new Font("",1,8));
+			JPanel pnlExist = new JPanel(new FlowLayout(2));
+			//btnExist.setHorizontalAlignment(JButton.RIGHT);
+			pnlExist.add(btnExist);
+			//pnlExist.setHorizontalAlignment(2);
+			add("South",pnlExist);
+			setVisible(true);
 		}
-		
-		private static JButton createColoredButton(String text, Color bgColor, Color fgColor) {
-        JButton button = new JButton(text);
-        
-        // Color configuration
-        button.setBackground(bgColor);
-        button.setForeground(fgColor);
-        
-        // Fixes background visibility on Mac / Look and Feels
-        button.setOpaque(true);
-        button.setBorderPainted(false);
-        
-        // Layout and Alignment configuration
-        button.setAlignmentX(Component.CENTER_ALIGNMENT); // Horizontally center within the box layout
-        button.setMaximumSize(new Dimension(180, 50));    // Lock the maximum dimension bounds
-        button.setPreferredSize(new Dimension(180, 50));   // Standard initial dimension hint
-        
-        return button;
-    }
+		 
+    
     
 	public static void main(String[] args){
 		new MainForm("iFriend Contact Organizer").setVisible(true);
