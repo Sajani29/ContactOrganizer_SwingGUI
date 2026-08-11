@@ -15,7 +15,7 @@ class MainForm extends JFrame{
 			setTitle(title);
 			setLocationRelativeTo(null);
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			setSize(650,550);
+			setSize(650,500);
 			//setLayout(new GridLayout(
 			//IMAGE====
 			ImageIcon image = new ImageIcon("assets/img.png");
