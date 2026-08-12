@@ -45,6 +45,12 @@ class MainForm extends JFrame{
 			btnAddContact.setFont(new Font("", Font.BOLD, 15));
 			btnAddContact.setBackground(Color.GREEN);
 			btnAddContact.setAlignmentX(Component.CENTER_ALIGNMENT);
+			btnAddContact.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent evt){
+				new AddContact().setVisible(true);
+			}
+		});
+
 			pnlButton.add(btnAddContact);
 
 			pnlButton.add(Box.createVerticalStrut(15));
