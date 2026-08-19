@@ -7,6 +7,7 @@ class ContactManager{
 		
 		 public static String generateId(int id){
 			String generatedId = String.format("C%04d",id);
+			id++;
 			return generatedId;
 		}
 		

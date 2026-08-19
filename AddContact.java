@@ -66,8 +66,15 @@ class AddContact extends JFrame{
 			//rightPanel.add(pnlButton);
 
 		add("West",pnlDetails);
-
 		
+		pnlText = new JPanel();
+		JLabel contactID = new JLabel(manager.generateId(manager.id));
+		JPanel pnlId = new JPanel();
+		pnlId.add(contactID);
+		pnlText.add(pnlId);
+		add("East",pnlText);
+		
+		JTextField txtName = new JTextField();
 		
 	}
 	
