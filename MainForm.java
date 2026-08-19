@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 class MainForm extends JFrame{
+		private ContactManager manager;
 		private JPanel leftPanel;
 		private JLabel lblTitle;
 		private JButton btnAddContact;
@@ -11,8 +12,10 @@ class MainForm extends JFrame{
 		private JButton btnListContact;
 		private JButton btnExist;
 		private JPanel pnlButton;
-		 MainForm(String title){
-			setTitle(title);
+		 MainForm(){
+			 
+			manager = new ContactManager();
+			
 			setLocationRelativeTo(null);
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			setSize(650,500);
@@ -47,9 +50,9 @@ class MainForm extends JFrame{
 			btnAddContact.setAlignmentX(Component.CENTER_ALIGNMENT);
 			btnAddContact.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent evt){
-				new AddContact().setVisible(true);
+				new AddContact(manager).setVisible(true);
 			}
-		});
+			});
 
 			pnlButton.add(btnAddContact);
 
@@ -61,7 +64,11 @@ class MainForm extends JFrame{
 			btnUpdateContact.setBackground(Color.GREEN);
 			btnUpdateContact.setAlignmentX(Component.CENTER_ALIGNMENT);
 			pnlButton.add(btnUpdateContact);
-
+			btnUpdateContact.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent evt){
+				new UpdateContact(manager).setVisible(true);
+			}
+			});
 			pnlButton.add(Box.createVerticalStrut(15));
 
 			// DELETE
@@ -70,7 +77,11 @@ class MainForm extends JFrame{
 			btnDeleteContact.setBackground(Color.GREEN);
 			btnDeleteContact.setAlignmentX(Component.CENTER_ALIGNMENT);
 			pnlButton.add(btnDeleteContact);
-
+			btnDeleteContact.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent evt){
+				new DeleteContact(manager).setVisible(true);
+			}
+			});
 			pnlButton.add(Box.createVerticalStrut(15));
 
 			// SEARCH
@@ -79,7 +90,11 @@ class MainForm extends JFrame{
 			btnSearchContact.setBackground(Color.GREEN);
 			btnSearchContact.setAlignmentX(Component.CENTER_ALIGNMENT);
 			pnlButton.add(btnSearchContact);
-
+			btnSearchContact.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent evt){
+				new SearchContact(manager).setVisible(true);
+			}
+			});
 			pnlButton.add(Box.createVerticalStrut(15));
 
 			// LIST
@@ -87,6 +102,11 @@ class MainForm extends JFrame{
 			btnListContact.setFont(new Font("", Font.BOLD, 15));
 			btnListContact.setBackground(Color.GREEN);
 			btnListContact.setAlignmentX(Component.CENTER_ALIGNMENT);
+			btnSearchContact.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent evt){
+				new SearchContact(manager).setVisible(true);
+			}
+			});
 			pnlButton.add(btnListContact);
 
 			//add(pnlButton, BorderLayout.CENTER);
@@ -113,7 +133,7 @@ class MainForm extends JFrame{
     
     
 	public static void main(String[] args){
-		new MainForm("iFriend Contact Organizer").setVisible(true);
+		new MainForm().setVisible(true);
 		
 	}
 	

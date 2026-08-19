@@ -1,11 +1,36 @@
+import java.time.*;
 class ContactManager{
 	static Contacts[] contactArray = new Contacts[0];
 	static int id = 1;
 	
-	public static String generateId(int id){
-		String generatedId = String.format("C%04d",id);
-		return generatedId;
-	}
+	ContactManager(){}
+		
+		 public static String generateId(int id){
+			String generatedId = String.format("C%04d",id);
+			return generatedId;
+		}
+		
+		
+		//public void 
+		public void extendArrays(String contactId, String name, String phoneNumber,String companyName,double salary,String dOb){
+			Contacts[] tempContactArray = new Contacts[contactArray.length +1];
+				for (int i = 0; i < contactArray.length; i++)
+				{
+					tempContactArray[i] = contactArray[i];
+				}
+					
+			contactArray = tempContactArray;
+			contactArray[contactArray.length -1] = new Contacts(contactId,name,phoneNumber,companyName,salary,dOb);
+		}
+	
+	
+}	
+		
+	//extend array
+	
+			
+			
+/*
 		
 	//check birthday
 	public static boolean isValidBirthday(String dOb){
@@ -45,19 +70,7 @@ class ContactManager{
 			return false;
 		}
 	}
-	//extend array
-	public static void extendArrays(String contactId, String name, String phoneNumber,String companyName,double salary,String dOb){
-		Contacts[] tempContactArray = new Contacts[contactArray.length +1];
-			for (int i = 0; i < contactArray.length; i++)
-			{
-				tempContactArray[i] = contactArray[i];
-			}
-				
-				contactArray = tempContactArray;
-				contactArray[contactArray.length -1] = new Contacts(contactId,name,phoneNumber,companyName,salary,dOb);
-			}
-			
-			
+
 	//CHECK PHONE NUMBER AND NAME 
 	public static int searchNameorPhoneNo(String inputValue){
 		for (int i = 0; i < contactArray.length; i++)
@@ -74,21 +87,21 @@ class ContactManager{
 	
 	//UPDATE SALARY
 	public static void updateSalary(int index){
-		//Scanner input = new Scanner(System.in);
-		/*System.out.println("Update Salary");
+		Scanner input = new Scanner(System.in);
+		System.out.println("Update Salary");
 		System.out.println("===============");
 		System.out.println();
-		System.out.print("Input new salary - "); */
+		System.out.print("Input new salary - "); 
 		int newSalary = input.nextInt();
 		if (!isValidsalary(newSalary))
 		{
 			System.out.println("Salary should positive .. try again..");
 		}
 		contactArray[index].setSalaryAmount(newSalary);
-		//System.out.println();
-		//System.out.println("\t Contact has been update successfully... ");
-		//System.out.println();
-		//System.out.print("Do you want to update another Contact(Y/N): ");
+		System.out.println();
+		System.out.println("\t Contact has been update successfully... ");
+		System.out.println();
+		System.out.print("Do you want to update another Contact(Y/N): ");
 		char yORn = input.next().charAt(0);
 		if (yORn == 'Y' ||yORn == 'y' )
 		{
@@ -100,17 +113,17 @@ class ContactManager{
 	}
 	//UPDATE COMPANY NAME 
 	public static void updateCompanyName(int index){
-		//Scanner input = new Scanner(System.in);
-		/*System.out.println("Update Company Name ");
+		Scanner input = new Scanner(System.in);
+		System.out.println("Update Company Name ");
 		System.out.println("===============");
 		System.out.println();
-		System.out.print("Input new name - ");*/
+		System.out.print("Input new name - ");
 		String newCompanyName = input.next();
 		contactArray[index].setCompanyName(newCompanyName);
-		//System.out.println();
-		//System.out.println("\t Contact has been update successfully... ");
-		//System.out.println();
-		//System.out.print("Do you want to update another Contact(Y/N): ");
+		System.out.println();
+		System.out.println("\t Contact has been update successfully... ");
+		System.out.println();
+		System.out.print("Do you want to update another Contact(Y/N): ");
 		char yORn = input.next().charAt(0);
 			if (yORn == 'Y' ||yORn == 'y' )
 			{
@@ -122,25 +135,25 @@ class ContactManager{
 	}
 	//UPDATE PHONE NUMBER
 	public static void updatephoneNo(int index){
-		//Scanner input = new Scanner(System.in);
-		/*System.out.println("Update Phone Number");
+		Scanner input = new Scanner(System.in);
+		System.out.println("Update Phone Number");
 		System.out.println("===============");
-		System.out.println();*/
+		System.out.println();
 		L5:while (true)
 		{
-			//System.out.print("Input new new phone number - ");
+			System.out.print("Input new new phone number - ");
 			String newPhoneNo = input.next();
 			if (!isValidPhonenumber(newPhoneNo))
 			{
-				//System.out.println("Invalid phone number.. try again..");
+				System.out.println("Invalid phone number.. try again..");
 				continue L5;
 			}else
 			{
 				contactArray[index].setContactPhoneNumber(newPhoneNo);
 				System.out.println();
-				//System.out.println("\t Contact has been update successfully... ");
-				//System.out.println();
-				//System.out.print("Do you want to update another Contact(Y/N): ");
+				System.out.println("\t Contact has been update successfully... ");
+				System.out.println();
+				System.out.print("Do you want to update another Contact(Y/N): ");
 				char yORn = input.next().charAt(0);
 				if (yORn == 'Y' ||yORn == 'y' )
 				{
@@ -154,17 +167,17 @@ class ContactManager{
 	}
 	//UPDATE NAME
 	public static void updateName(int index){
-		//Scanner input = new Scanner(System.in);
-		/*System.out.println("Update Name");
+		Scanner input = new Scanner(System.in);
+		System.out.println("Update Name");
 		System.out.println("===============");
 		System.out.println();
-		System.out.print("Input new name - ");*/
+		System.out.print("Input new name - ");
 		String newName = input.next();
 		contactArray[index].setContactName(newName);
-		//System.out.println();
-		//System.out.println("\t Contact has been update successfully... ");
-		//System.out.println();
-		//System.out.print("Do you want to update another Contact(Y/N): ");
+		System.out.println();
+		System.out.println("\t Contact has been update successfully... ");
+		System.out.println();
+		System.out.print("Do you want to update another Contact(Y/N): ");
 		char yORn = input.next().charAt(0);
 			if (yORn == 'Y' ||yORn == 'y' )
 			{
@@ -225,7 +238,10 @@ class ContactManager{
 				}
 			}
 		}
+		
+		
 	}
 	
 	
-}
+	*/
+

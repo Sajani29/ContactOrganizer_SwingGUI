@@ -3,8 +3,9 @@ import javax.swing.*;
 import java.awt.*;
 
 class AddContact extends JFrame{
-	private JPanel pblDetails;
-	AddContact(){
+	private JPanel pnlDetails;
+	private JPanel pnlText;
+	AddContact(ContactManager manager){
 		setTitle("Add Contact");
 		setSize(400,400);
 		setDefaultCloseOperation(2);
@@ -50,20 +51,25 @@ class AddContact extends JFrame{
 		JPanel pnlBOD = new JPanel();
 		pnlBOD.add(lblBOD);
 		
-		pblDetails  = new JPanel(new GridLayout(6,1));
-		pblDetails.add(pnlContactID);
-		pblDetails.add(pnlName);
-		pblDetails.add(pnlNumber);
-		pblDetails.add(pnlCompanyName);
-		pblDetails.add(pnlSalary);
-		pblDetails.add(pnlBOD);
+		pnlDetails  = new JPanel(new GridLayout(6,1));
+		pnlDetails.add(pnlContactID);
+		pnlDetails.add(pnlName);
+		pnlDetails.add(pnlNumber);
+		pnlDetails.add(pnlCompanyName);
+		pnlDetails.add(pnlSalary);
+		pnlDetails.add(pnlBOD);
 		
-		pblDetails.setBorder(
+		pnlDetails.setBorder(
 				BorderFactory.createEmptyBorder(20, 5, 10, 30)
 			);
 
 			//rightPanel.add(pnlButton);
 
-		add("West",pblDetails);
+		add("West",pnlDetails);
+
+		
+		
 	}
+	
+	
 }
