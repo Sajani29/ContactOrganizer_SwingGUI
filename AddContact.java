@@ -7,7 +7,7 @@ class AddContact extends JFrame{
 	private JPanel pnlText;
 	AddContact(ContactManager manager){
 		setTitle("Add Contact");
-		setSize(400,400);
+		setSize(600,6500);
 		setDefaultCloseOperation(2);
 		setLocationRelativeTo(null);
 		
@@ -20,44 +20,38 @@ class AddContact extends JFrame{
 		lblTopic.setForeground(Color.BLACK);
 		lblTopic.setPreferredSize(new Dimension(100, 50));
 		
-		JLabel lblContactID = new JLabel("Contact ID: ");
-		lblContactID.setFont(new Font("",1,10));
-		JPanel pnlContactID = new JPanel();
-		pnlContactID.add(lblContactID);
-		
+		JLabel lblContactID = new JLabel("Contact ID: " +manager.generateId(manager.id));
+		lblContactID.setFont(new Font("",1,14));
+		JLabel contactID = new JLabel(manager.generateId(manager.id));
+		contactID.setFont(new Font("",1,14));
+		JPanel pnlId = new JPanel(new FlowLayout(1));
+		pnlId.add(lblContactID);
+		pnlId.add(contactID);
+		//pnlId.setLayout(new FlowLayout(0));
+		add(pnlId);
+		/*
 		JLabel lblName = new JLabel("Name :");
 		lblName.setFont(new Font("",1,10));
-		JPanel pnlName = new JPanel();
-		pnlName.add(lblName);
 		
 		JLabel lblNumber = new JLabel("Phone Number : ");
 		lblNumber.setFont(new Font("",1,10));
-		JPanel pnlNumber = new JPanel();
-		pnlNumber.add(lblNumber);
 		
 		JLabel lblCompanyName = new JLabel("Company Name :");
 		lblCompanyName.setFont(new Font("",1,10));
-		JPanel pnlCompanyName = new JPanel();
-		pnlCompanyName.add(lblCompanyName);
 		
 		JLabel lblSalary = new JLabel("Salary :");
 		lblSalary.setFont(new Font("",1,10));
-		JPanel pnlSalary = new JPanel();
-		pnlSalary.add(lblSalary);
-		
 		
 		JLabel lblBOD = new JLabel("B'Day(YYYY-MM-DD):");
 		lblBOD.setFont(new Font("",1,10));
-		JPanel pnlBOD = new JPanel();
-		pnlBOD.add(lblBOD);
-		
+
 		pnlDetails  = new JPanel(new GridLayout(6,1));
-		pnlDetails.add(pnlContactID);
-		pnlDetails.add(pnlName);
-		pnlDetails.add(pnlNumber);
-		pnlDetails.add(pnlCompanyName);
-		pnlDetails.add(pnlSalary);
-		pnlDetails.add(pnlBOD);
+		pnlDetails.add(lblContactID);
+		pnlDetails.add(lblName);
+		pnlDetails.add(lblNumber);
+		pnlDetails.add(lblCompanyName);
+		pnlDetails.add(lblSalary);
+		pnlDetails.add(lblBOD);
 		
 		pnlDetails.setBorder(
 				BorderFactory.createEmptyBorder(20, 5, 10, 30)
@@ -66,16 +60,38 @@ class AddContact extends JFrame{
 			//rightPanel.add(pnlButton);
 
 		add("West",pnlDetails);
-		
-		pnlText = new JPanel();
-		JLabel contactID = new JLabel(manager.generateId(manager.id));
-		JPanel pnlId = new JPanel();
-		pnlId.add(contactID);
+		*/
+		pnlText = new JPanel(new GridLayout(6,1));
 		pnlText.add(pnlId);
+		
+		
+		JTextField txtName = new JTextField(15);
+		JPanel pnlName = new JPanel();
+		pnlName.add(txtName);
+		
+		JTextField txtPhoneNo = new JTextField(10);
+		JPanel pnlNo = new JPanel();
+		pnlNo.add(txtPhoneNo);
+		
+		JTextField txtComName = new JTextField(10);
+		JPanel pnlComName = new JPanel();
+		pnlComName.add(txtComName);
+		
+		JTextField txtSalary = new JTextField(5);
+		JPanel pnlsalary = new JPanel();
+		pnlsalary.add(txtSalary);
+		
+		JTextField txtDOB = new JTextField(9);
+		JPanel pnlDOB = new JPanel();
+		pnlDOB.add(txtDOB);
+		
+		pnlText.add(pnlName);
+		pnlText.add(pnlNo);
+		pnlText.add(pnlComName);
+		pnlText.add(pnlsalary);
+		pnlText.add(pnlDOB);
+		
 		add("East",pnlText);
-		
-		JTextField txtName = new JTextField();
-		
 	}
 	
 	
