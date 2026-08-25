@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
-
+import java.awt.event.*;
+import java.time.*;
 class AddContact extends JFrame {
 
     private JPanel pnlDetails;
@@ -78,13 +79,80 @@ class AddContact extends JFrame {
         JTextField txtName = new JTextField(15);
 
         JTextField txtPhoneNo = new JTextField(10);
+       
+		//phone no validationn part=====================
+		txtPhoneNo.addFocusListener(new FocusAdapter() {
+			
+			@Override
+			public void focusLost(FocusEvent e) {
 
+				String phone = txtPhoneNo.getText().trim();
+
+				if (!phone.matches("0\\d{9}")) {
+
+					JOptionPane.showMessageDialog(
+							AddContact.this,
+							"Invalid phone number.\n" +
+							"Phone number must start with 0 and contain 10 digits."
+					);
+
+					txtPhoneNo.requestFocus();
+				}
+			}
+	    });
+	    //======================================
+ 
         JTextField txtComName = new JTextField(10);
 
         JTextField txtSalary = new JTextField(7);
+        
+		//salary validation part==========
+		txtSalary.addFocusListener(new FocusAdapter() {
+			 
+			@Override
+			public void focusLost(FocusEvent e) {
+			double salary = Double.parseDouble(txtSalary.getText());
+				if (salary<0) {
 
+					JOptionPane.showMessageDialog(
+							AddContact.this,
+							"Invalid value for salary.\n" +
+							"Salary must be positive."
+					);
+
+					txtSalary.requestFocus();
+				}
+			}
+	    });
+		//===========================
+        
         JTextField txtDOB = new JTextField(10);
-
+        
+		//DOB validation part========
+		txtDOB.addFocusListener(new FocusAdapter() {
+			
+			@Override
+			public void focusLost(FocusEvent e) { 
+			String dOB = txtDOB.getText();
+				LocalDate localdate = LocalDate.parse(dOB);
+				int birthyear = localdate.getYear();
+				int birthmonth = localdate.getMonthValue();
+				int birthdate = localdate.getDayOfMonth();
+					
+				LocalDate currentDate = LocalDate.now();
+				int currentYear = currentDate.getYear();
+					
+					
+				if(!(birthyear > 1926 && birthyear < currentYear && 12> birthmonth && birthmonth > 0 && birthdate >0 &&  birthdate <30)){
+					JOptionPane.showMessageDialog(
+							AddContact.this,
+							"Invalid value for Birth day.\n" +
+							"Enter YYYY-MM-DD format."
+					);
+					txtDOB.requestFocus();
+				}
+			}
+	    });
 
         // =====================================================
         // 6. LABEL PANELS
@@ -206,20 +274,28 @@ class AddContact extends JFrame {
                         FlowLayout.CENTER, 20, 10
                 ));
 
-        JButton btnAdd = new JButton("Add Contact");
+        JButton btnAddContact = new JButton("Add Contact");
         JButton btnCancel = new JButton("Cancel");
 
-        pnlButtons.add(btnAdd);
+        pnlButtons.add(btnAddContact);
         pnlButtons.add(btnCancel);
-        btnAdd.setBackground(Color.GREEN);
+        btnAddContact.setBackground(Color.GREEN);
         btnCancel.setBackground(Color.red );
         add(pnlButtons, BorderLayout.SOUTH);
 
-
-        // =====================================================
-        // 11. CANCEL BUTTON
-        // =====================================================
-
+		//Add contact button event==========
+        btnAddContact.addActionListener(e -> {
+			String name = txtName.getText();
+			String phone = txtPhoneNo.getText().trim();
+			String companyName = txtComName.getText();
+			double salary = Double.parseDouble(txtSalary.getText());
+			String dOB = txtDOB.getText();
+			
+			//manager.addContact(name,phone,companyName,salary,dOB);
+			//manager.extendArrays(manager.generateId(manager.id),name,phone,companyName,salary,dOB);
+		});
+		
+        // cancel button event=============
         btnCancel.addActionListener(e -> {
             dispose();
         });

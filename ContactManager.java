@@ -10,9 +10,8 @@ class ContactManager{
 			id++;
 			return generatedId;
 		}
-		
-		
-		//public void 
+	
+		//extend array
 		public void extendArrays(String contactId, String name, String phoneNumber,String companyName,double salary,String dOb){
 			Contacts[] tempContactArray = new Contacts[contactArray.length +1];
 				for (int i = 0; i < contactArray.length; i++)
@@ -24,10 +23,15 @@ class ContactManager{
 			contactArray[contactArray.length -1] = new Contacts(contactId,name,phoneNumber,companyName,salary,dOb);
 		}
 	
+		public static void addContact(String name,String phoneNo,String ComName,double salary,String dOb){
+			Contacts c1 = new Contacts(generateId(id),name,phoneNo,ComName,salary,dOb);
+			
+			contactArray[id] = c1;
+		}
 	
 }	
 		
-	//extend array
+	
 	
 			
 			
