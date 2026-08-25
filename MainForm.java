@@ -19,7 +19,7 @@ class MainForm extends JFrame{
 			setLocationRelativeTo(null);
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			setSize(650,500);
-			//setLayout(new GridLayout(
+			
 			//IMAGE====
 			ImageIcon image = new ImageIcon("assets/img.png");
 			Image originalImage = image.getImage();
@@ -87,7 +87,7 @@ class MainForm extends JFrame{
 			// SEARCH
 			btnSearchContact = new JButton("SEARCH Contacts");
 			btnSearchContact.setFont(new Font("", Font.BOLD, 15));
-			btnSearchContact.setBackground(Color.GREEN);
+			btnSearchContact.setBackground(Color.green);
 			btnSearchContact.setAlignmentX(Component.CENTER_ALIGNMENT);
 			pnlButton.add(btnSearchContact);
 			btnSearchContact.addActionListener(new ActionListener(){
@@ -122,8 +122,13 @@ class MainForm extends JFrame{
 			//rightPanel.setBackground(Color.PINK);
 
 			btnExist = new JButton("Exist");
+			btnExist.addActionListener(e -> {
+            System.exit(0);
+			});
+
+			
 			btnExist.setFont(new Font("",1,15));
-			btnExist.setBackground(Color.GREEN);
+			btnExist.setBackground(Color.red);
 			JPanel pnlExist = new JPanel(new FlowLayout(2));
 			pnlExist.add(btnExist);
 			add("South",pnlExist);
