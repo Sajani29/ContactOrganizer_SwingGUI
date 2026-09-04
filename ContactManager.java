@@ -73,6 +73,20 @@ class ContactManager{
     }
 }
 		
+		
+		//CHECK PHONE NUMBER AND NAME 
+	public static int searchNameorPhoneNo(String inputValue){
+		for (int i = 0; i < contactArray.length; i++)
+		{
+			if (inputValue.equals(contactArray[i].getContactName()) || inputValue.equals(contactArray[i].getContactPhoneNumber()))
+			{
+				return i;
+			}
+			
+		}
+		return -1;
+		
+	}
 	
 }	
 		
@@ -87,19 +101,7 @@ class ContactManager{
 		
 	
 
-	//CHECK PHONE NUMBER AND NAME 
-	public static int searchNameorPhoneNo(String inputValue){
-		for (int i = 0; i < contactArray.length; i++)
-		{
-			if (inputValue.equals(contactArray[i].getContactName()) || inputValue.equals(contactArray[i].getContactPhoneNumber()))
-			{
-				return i;
-			}
-			
-		}
-		return -1;
-		
-	}
+	
 	
 	//UPDATE SALARY
 	public static void updateSalary(int index){

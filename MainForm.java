@@ -80,6 +80,7 @@ class MainForm extends JFrame{
 			pnlButton.add(btnDeleteContact);
 			btnDeleteContact.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent evt){
+				dispose();
 				new DeleteContact(manager).setVisible(true);
 			}
 			});
@@ -93,7 +94,8 @@ class MainForm extends JFrame{
 			pnlButton.add(btnSearchContact);
 			btnSearchContact.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent evt){
-				new SearchContact(manager).setVisible(true);
+				dispose();
+				new SearchContact(manager);
 			}
 			});
 			pnlButton.add(Box.createVerticalStrut(15));
@@ -103,9 +105,9 @@ class MainForm extends JFrame{
 			btnListContact.setFont(new Font("", Font.BOLD, 15));
 			btnListContact.setBackground(Color.GREEN);
 			btnListContact.setAlignmentX(Component.CENTER_ALIGNMENT);
-			btnSearchContact.addActionListener(new ActionListener(){
+			btnListContact.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent evt){
-				new SearchContact(manager).setVisible(true);
+				new ListContact(manager).setVisible(true);
 			}
 			});
 			pnlButton.add(btnListContact);
