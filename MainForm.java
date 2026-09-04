@@ -50,6 +50,7 @@ class MainForm extends JFrame{
 			btnAddContact.setAlignmentX(Component.CENTER_ALIGNMENT);
 			btnAddContact.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent evt){
+				dispose();
 				new AddContact(manager).setVisible(true);
 			}
 			});

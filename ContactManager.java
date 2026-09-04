@@ -1,4 +1,5 @@
 import java.time.*;
+import java.time.format.DateTimeParseException;
 class ContactManager{
 	static Contacts[] contactArray = new Contacts[0];
 	static int id = 1;
@@ -7,12 +8,11 @@ class ContactManager{
 		
 		 public static String generateId(int id){
 			String generatedId = String.format("C%04d",id);
-			id++;
 			return generatedId;
 		}
 	
 		//extend array
-		public void extendArrays(String contactId, String name, String phoneNumber,String companyName,double salary,String dOb){
+		public static void extendArrays(String contactId, String name, String phoneNumber,String companyName,double salary,String dOb){
 			Contacts[] tempContactArray = new Contacts[contactArray.length +1];
 				for (int i = 0; i < contactArray.length; i++)
 				{
@@ -23,34 +23,22 @@ class ContactManager{
 			contactArray[contactArray.length -1] = new Contacts(contactId,name,phoneNumber,companyName,salary,dOb);
 		}
 	
+		//Addcontact
 		public static void addContact(String name,String phoneNo,String ComName,double salary,String dOb){
-			Contacts c1 = new Contacts(generateId(id),name,phoneNo,ComName,salary,dOb);
+			extendArrays(generateId(id),name,phoneNo,ComName,salary,dOb);
+			id++;
 			
-			contactArray[id] = c1;
 		}
-	
-}	
 		
-	
-	
-			
-			
-/*
 		
-	//check birthday
-	public static boolean isValidBirthday(String dOb){
-		LocalDate localdate = LocalDate.parse(dOb);
-		int birthyear = localdate.getYear();
-		int birthmonth = localdate.getMonthValue();
-		int birthdate = localdate.getDayOfMonth();
-			
-		LocalDate currentDate = LocalDate.now();
-		int currentYear = currentDate.getYear();
-			
-			
-		if(birthyear > 1926 && birthyear < currentYear && 12> birthmonth && birthmonth > 0 && birthdate >0 &&  birthdate <30){
+		//check phone number
+		public static boolean isValidPhonenumber(String number){
+		if (number.startsWith("0") && number.length() == 10)
+		{
 			return true;
-		}else{
+		}
+		else
+		{
 			return false;
 		}
 	}
@@ -62,19 +50,42 @@ class ContactManager{
 			return true;
 		}
 			return false;
-		}
-			
-	//check phone number
-	public static boolean isValidPhonenumber(String number){
-		if (number.startsWith("0") && number.length() == 10)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
 	}
+	
+	//check birthday
+	public static boolean isValidBirthday(String dOb) {
+    try {
+        LocalDate localdate = LocalDate.parse(dOb);
+
+        LocalDate currentDate = LocalDate.now();
+
+        if (localdate.getYear() > 1926 &&
+            !localdate.isAfter(currentDate)) {
+
+            return true;
+
+        } else {
+            return false;
+        }
+
+    } catch (DateTimeParseException e) {
+        return false;
+    }
+}
+		
+	
+}	
+		
+	
+	
+			
+			
+/*
+		
+	
+	
+		
+	
 
 	//CHECK PHONE NUMBER AND NAME 
 	public static int searchNameorPhoneNo(String inputValue){
