@@ -4,7 +4,7 @@ import java.awt.*;
 
 class UpdateContact extends JFrame{
 	
-	public UpdateContact(ContactManager manage){
+	public UpdateContact(ContactManager manager){
 		
 	}
 }

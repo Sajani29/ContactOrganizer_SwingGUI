@@ -4,7 +4,7 @@ import java.awt.*;
 
 class ListContact extends JFrame{
 	
-	public ListContact(ContactManager manage){
+	public ListContact(ContactManager manager){
 		
 	}
 }
