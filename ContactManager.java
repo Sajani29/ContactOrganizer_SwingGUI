@@ -88,6 +88,18 @@ class ContactManager{
 		
 	}
 	
+	//REDUCE ARRAY
+	public static void reduceArrays(int index){
+		Contacts[] temporaryArray = new Contacts[contactArray.length -1];
+		for (int i = index; i < contactArray.length-1; i++)
+		{
+			contactArray[i] = contactArray[i+1];
+		}
+		
+		contactArray = temporaryArray;
+		
+	}
+	
 }	
 		
 	
