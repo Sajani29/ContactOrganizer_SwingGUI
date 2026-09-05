@@ -258,6 +258,7 @@ class AddContact extends JFrame {
 			
 			manager.addContact(name,phone,companyName,salary,dOB);
 			JOptionPane.showMessageDialog(this, "Contact added successfully!");
+			dispose();
 			MainForm.main(null);
 		});
 		

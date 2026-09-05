@@ -88,18 +88,28 @@ class ContactManager{
 		
 	}
 	
-	//REDUCE ARRAY
-	public static void reduceArrays(int index){
-		Contacts[] temporaryArray = new Contacts[contactArray.length -1];
-		for (int i = index; i < contactArray.length-1; i++)
-		{
-			contactArray[i] = contactArray[i+1];
+	// REDUCE ARRAY
+		public static void reduceArrays(int index) {
+
+			if (contactArray.length == 0) {
+				return;
+			}
+
+			Contacts[] temporaryArray = new Contacts[contactArray.length - 1];
+
+			for (int i = 0, j = 0; i < contactArray.length; i++) {
+
+				if (i == index) {
+					continue;
+				}
+
+				temporaryArray[j] = contactArray[i];
+				j++;
+			}
+
+			contactArray = temporaryArray;
 		}
-		
-		contactArray = temporaryArray;
-		
-	}
-	
+			
 }	
 		
 	
@@ -117,15 +127,10 @@ class ContactManager{
 	
 	//UPDATE SALARY
 	public static void updateSalary(int index){
-		Scanner input = new Scanner(System.in);
-		System.out.println("Update Salary");
-		System.out.println("===============");
-		System.out.println();
-		System.out.print("Input new salary - "); 
-		int newSalary = input.nextInt();
-		if (!isValidsalary(newSalary))
+		
+		if (isValidsalary(contactArray[index].getSalaryAmount()))
 		{
-			System.out.println("Salary should positive .. try again..");
+			
 		}
 		contactArray[index].setSalaryAmount(newSalary);
 		System.out.println();

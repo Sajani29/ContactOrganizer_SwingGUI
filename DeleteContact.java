@@ -7,7 +7,7 @@ class DeleteContact extends JFrame {
     private JButton btnDelete;
     private JButton btnCancel;
     private JPanel pnlDeletebutton;
-
+	private int index;
     public DeleteContact(ContactManager manager) {
 
         setTitle("Delete Contact");
@@ -88,8 +88,16 @@ class DeleteContact extends JFrame {
         btnDelete = new JButton("Delete");
         btnDelete.setFont(new Font("", Font.BOLD, 10));
         btnDelete.setBackground(Color.red);
-        btnDelete.addActionListener(e -> {
-			manager.reduceArrays(index);
+		btnDelete.addActionListener(e -> {
+		manager.reduceArrays(index);
+
+		JOptionPane.showMessageDialog(
+			DeleteContact.this,
+			"Contact deleted successfully."
+		);
+
+		dispose();
+		MainForm.main(null);
 		});
 
         pnlDeletebutton.add(lblChoice);
@@ -121,7 +129,7 @@ class DeleteContact extends JFrame {
 
             String input = txtInput.getText();
 
-            int index = manager.searchNameorPhoneNo(input);
+             index = manager.searchNameorPhoneNo(input);
 
             if (index == -1) {
 
