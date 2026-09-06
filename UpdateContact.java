@@ -17,7 +17,7 @@ class UpdateContact extends JFrame {
     public UpdateContact(ContactManager manager) {
 
         setTitle("Update Contact");
-        setSize(1000, 800);
+        setSize(1200, 300);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -279,60 +279,54 @@ class UpdateContact extends JFrame {
 
         // Salary button action
 
-        btnUpdateSalary.addActionListener(e -> {
+       btnUpdateSalary.addActionListener(e -> {
 
-            pnlgetSalary.setVisible(true);
-            btnUpdate.setVisible(true);
+    if (index == -1) {
+        JOptionPane.showMessageDialog(
+            UpdateContact.this,
+            "Please search for a contact first."
+        );
+        return;
+    }
 
-            pnlUpdatebutton.revalidate();
-            pnlUpdatebutton.repaint();
-        });
+    String salaryText = JOptionPane.showInputDialog(
+        UpdateContact.this,
+        "Enter new salary:"
+    );
 
-        // Salary Update button action
+    if (salaryText == null) {
+        return; // User clicked Cancel
+    }
 
-        btnUpdate.addActionListener(e -> {
+    try {
 
-            String salaryText = txtInputforSalary.getText().trim();
+        double salary = Double.parseDouble(salaryText.trim());
 
-            try {
+        if (salary <= 0) {
 
-                double salary = Double.parseDouble(salaryText);
+            JOptionPane.showMessageDialog(
+                UpdateContact.this,
+                "Salary must be a positive value."
+            );
 
-                if (salary <= 0) {
+        } else {
 
-                    JOptionPane.showMessageDialog(
-                            UpdateContact.this,
-                            "Salary must be a positive value."
-                    );
+            manager.contactArray[index].setSalaryAmount(salary);
 
-                } else {
+            JOptionPane.showMessageDialog(
+                UpdateContact.this,
+                "Salary is updated successfully."
+            );
+        }
 
-                    manager.contactArray[index]
-                            .setSalaryAmount(salary);
+    } catch (NumberFormatException ex) {
 
-                    JOptionPane.showMessageDialog(
-                            UpdateContact.this,
-                            "Salary is updated successfully."
-                    );
-
-                    txtInputforSalary.setText("");
-
-                    pnlgetSalary.setVisible(false);
-                    btnUpdate.setVisible(false);
-
-                    pnlUpdatebutton.revalidate();
-                    pnlUpdatebutton.repaint();
-                }
-
-            } catch (NumberFormatException ex) {
-
-                JOptionPane.showMessageDialog(
-                        UpdateContact.this,
-                        "Please enter a valid salary."
-                );
-            }
-        });
-
+        JOptionPane.showMessageDialog(
+            UpdateContact.this,
+            "Please enter a valid salary."
+        );
+    }
+});
         // Add components to update panel
 
         pnlUpdatebutton.add(lblChoice);
