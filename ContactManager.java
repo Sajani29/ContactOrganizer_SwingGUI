@@ -111,130 +111,9 @@ class ContactManager{
 		}
 			
 }	
-		
-	
-	
-			
-			
-/*
-		
-	
-	
-		
-	
 
 	
-	
-	//UPDATE SALARY
-	public static void updateSalary(int index){
-		
-		if (isValidsalary(contactArray[index].getSalaryAmount()))
-		{
-			
-		}
-		contactArray[index].setSalaryAmount(newSalary);
-		System.out.println();
-		System.out.println("\t Contact has been update successfully... ");
-		System.out.println();
-		System.out.print("Do you want to update another Contact(Y/N): ");
-		char yORn = input.next().charAt(0);
-		if (yORn == 'Y' ||yORn == 'y' )
-		{
-			updateContacts();
-		}if (yORn == 'N' ||yORn == 'n')
-		{
-			main(null);
-		}
-	}
-	//UPDATE COMPANY NAME 
-	public static void updateCompanyName(int index){
-		Scanner input = new Scanner(System.in);
-		System.out.println("Update Company Name ");
-		System.out.println("===============");
-		System.out.println();
-		System.out.print("Input new name - ");
-		String newCompanyName = input.next();
-		contactArray[index].setCompanyName(newCompanyName);
-		System.out.println();
-		System.out.println("\t Contact has been update successfully... ");
-		System.out.println();
-		System.out.print("Do you want to update another Contact(Y/N): ");
-		char yORn = input.next().charAt(0);
-			if (yORn == 'Y' ||yORn == 'y' )
-			{
-				updateContacts();
-			}if (yORn == 'N' ||yORn == 'n')
-			{
-				main(null);
-			}
-	}
-	//UPDATE PHONE NUMBER
-	public static void updatephoneNo(int index){
-		Scanner input = new Scanner(System.in);
-		System.out.println("Update Phone Number");
-		System.out.println("===============");
-		System.out.println();
-		L5:while (true)
-		{
-			System.out.print("Input new new phone number - ");
-			String newPhoneNo = input.next();
-			if (!isValidPhonenumber(newPhoneNo))
-			{
-				System.out.println("Invalid phone number.. try again..");
-				continue L5;
-			}else
-			{
-				contactArray[index].setContactPhoneNumber(newPhoneNo);
-				System.out.println();
-				System.out.println("\t Contact has been update successfully... ");
-				System.out.println();
-				System.out.print("Do you want to update another Contact(Y/N): ");
-				char yORn = input.next().charAt(0);
-				if (yORn == 'Y' ||yORn == 'y' )
-				{
-					updateContacts();
-				}if (yORn == 'N' ||yORn == 'n')
-				{
-					main(null);
-				}
-			}
-		}
-	}
-	//UPDATE NAME
-	public static void updateName(int index){
-		Scanner input = new Scanner(System.in);
-		System.out.println("Update Name");
-		System.out.println("===============");
-		System.out.println();
-		System.out.print("Input new name - ");
-		String newName = input.next();
-		contactArray[index].setContactName(newName);
-		System.out.println();
-		System.out.println("\t Contact has been update successfully... ");
-		System.out.println();
-		System.out.print("Do you want to update another Contact(Y/N): ");
-		char yORn = input.next().charAt(0);
-			if (yORn == 'Y' ||yORn == 'y' )
-			{
-				updateContacts();
-			}if (yORn == 'N' ||yORn == 'n')
-			{
-				main(null);
-			}
-	}
-	
-	//REDUCE ARRAY
-	public static void reduceArrays(int index){
-		Contacts[] temporaryArray = new Contacts[contactArray.length -1];
-		for (int i = index; i < contactArray.length-1; i++)
-		{
-			contactArray[i] = contactArray[i+1];
-		}
-		
-		contactArray = temporaryArray;
-		
-	}
-	
+	/*
 	//SORT BY NAME
 	public static void sortingByName(){
 	//Scanner input=new Scanner(System.in);
@@ -249,6 +128,8 @@ class ContactManager{
 			}
 		}
 	}
+	
+	
 	//SORT BY SALARY
 	public static void sortingBySalary(){
 		//Scanner input = new Scanner(System.in);
@@ -273,10 +154,9 @@ class ContactManager{
 				}
 			}
 		}
+		*/
 		
 		
-	}
 	
 	
-	*/
 
